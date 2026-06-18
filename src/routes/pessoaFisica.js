@@ -176,7 +176,7 @@ async function montarDto(codigo) {
   if (pessoa.cidade) { const r = await queryOne("SELECT nome FROM tb_cidade WHERE codigo = ?", [pessoa.cidade]); cidadeNome = r?.nome; }
   if (pessoa.bairro) { const r = await queryOne("SELECT nome FROM tb_bairro WHERE codigo = ?", [pessoa.bairro]); bairroNome = r?.nome; }
   if (pessoa.endereco) { const r = await queryOne("SELECT nome FROM tb_endereco WHERE codigo = ?", [pessoa.endereco]); enderecoNome = r?.nome; }
-  if (pf.profissao) { const r = await queryOne("SELECT Descricao FROM tb_cbo WHERE CBO = ?", [String(pf.profissao)]); profissaoDesc = r?.Descricao; }
+  if (pf.profissao) { const r = await queryOne("SELECT Descricao FROM tb_cbo WHERE CBO = ?", [String(pf.profissao)]); profissaoDesc = r?.descricao; }
 
   return {
     codigo: pessoa.codigo, nome: pessoa.nome, cpf: pf.cpf, nascimento: pf.nascimento,

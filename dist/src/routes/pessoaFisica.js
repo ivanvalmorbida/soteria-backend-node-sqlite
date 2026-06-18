@@ -109,7 +109,7 @@ router.put("/:codigo", authorize(...Policies.UsuarioOuSuperior), async (req, res
   try {
     const codigo = parseInt(req.params.codigo);
     const dto = req.body;
-    if (codigo !== dto.codigo) {
+    if (Number(codigo) !== Number(dto.codigo)) {
       return res.status(400).json({ message: "Código informado não corresponde ao código da URL" });
     }
 
@@ -176,7 +176,7 @@ async function montarDto(codigo) {
   if (pessoa.cidade) { const r = await queryOne("SELECT nome FROM tb_cidade WHERE codigo = ?", [pessoa.cidade]); cidadeNome = r?.nome; }
   if (pessoa.bairro) { const r = await queryOne("SELECT nome FROM tb_bairro WHERE codigo = ?", [pessoa.bairro]); bairroNome = r?.nome; }
   if (pessoa.endereco) { const r = await queryOne("SELECT nome FROM tb_endereco WHERE codigo = ?", [pessoa.endereco]); enderecoNome = r?.nome; }
-  if (pf.profissao) { const r = await queryOne("SELECT Descricao FROM tb_cbo WHERE CBO = ?", [String(pf.profissao)]); profissaoDesc = r?.descricao; }
+  if (pf.profissao) { const r = await queryOne("SELECT Descricao FROM tb_cbo WHERE CBO = ?", [String(pf.profissao)]); profissaoDesc = r?.Descricao; }
 
   return {
     codigo: pessoa.codigo, nome: pessoa.nome, cpf: pf.cpf, nascimento: pf.nascimento,
@@ -194,7 +194,7 @@ async function montarDto(codigo) {
       codigo: e.codigo, endereco: e.endereco, tipo: e.tipo,
       tipoDescricao: e.tipo ? TipoEnderecoEletronico.obterDescricao(e.tipo) : null, descricao: e.descricao,
     })),
-    obs: pessoa.obs, cadastro: pessoa.cadastro,
+    conjuge: pf.conjuge, obs: pessoa.obs, cadastro: pessoa.cadastro,
   };
 }
 
