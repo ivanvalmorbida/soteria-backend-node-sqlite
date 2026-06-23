@@ -172,13 +172,16 @@ router.get("/tipotelefone", async (req, res) => {
 router.get("/tipoenderecoeletronico", async (req, res) => {
   res.json([{ codigo: 1, descricao: "E-mail", icone: "📧" },
   { codigo: 2, descricao: "Website", icone: "🌐" },
-  { codigo: 3, descricao: "WhatsApp", icone: "💬" },
-  { codigo: 4, descricao: "Telegram", icone: "✈️" },
-  { codigo: 5, descricao: "Comercial", icone: "🏢" },
-  { codigo: 6, descricao: "Residencial", icone: "🏠" },
-  { codigo: 7, descricao: "Recado", icone: "📞" },
-  { codigo: 8, descricao: "Fax", icone: "📠" },
-  { codigo: 99, descricao: "Outro", icone: "📞" }]);
+  { codigo: 3, descricao: "Facebook", icone: "📘" },
+  { codigo: 4, descricao: "Instagram", icone: "📷" },
+  { codigo: 5, descricao: "LinkedIn", icone: "💼" },
+  { codigo: 6, descricao: "Twitter/X", icone: "🐦" },
+  { codigo: 7, descricao: "WhatsApp", icone: "💬" },
+  { codigo: 7, descricao: "Telegram", icone: "✈️" },
+  { codigo: 7, descricao: "YouTube", icone: "📺" },
+  { codigo: 7, descricao: "TikTok", icone: "🎵" },
+  { codigo: 8, descricao: "GitHub", icone: "💻" },
+  { codigo: 99, descricao: "Outro", icone: "🔗" }]);
 });
 
 export default router;
